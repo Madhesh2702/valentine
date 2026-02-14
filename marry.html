@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Will You Marry Me 💍</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+ <style>
+  body {
+    background: linear-gradient(180deg, #fff0f5 0%, #ffffff 100%);
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 24px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.8;
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh) scale(1.5);
+      opacity: 0;
+    }
+  }
+</style>
+
+</head>
+
+<body class="flex flex-col items-center justify-center text-center relative">
+
+  <h1 class="text-5xl font-bold text-pink-600 mb-6">
+    Gayathri 💖
+  </h1>
+
+  <img
+    src="./images/val.jpg"
+    class="h-[300px] rounded-xl mb-6"
+  />
+
+  <h2 class="text-4xl font-semibold text-gray-800 mb-8">
+    Will You Marry Me? 💍✨
+  </h2>
+
+  <div class="flex gap-6 mt-4 relative">
+    <button
+      id="yesBtn"
+      class="px-8 py-4 bg-pink-500 text-white text-xl rounded-xl transition-all duration-300"
+    >
+      Yes 💕
+    </button>
+
+    <button
+  id="noBtn"
+  class="px-8 py-4 bg-gray-500 text-white text-xl rounded-xl transition-all duration-300"
+>
+  No 😅
+</button>
+
+  </div>
+
+  <script>
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+
+  let scale = 1;
+
+  // YES button → go to forever page
+  yesBtn.addEventListener("click", () => {
+    window.location.href = "forever.html";
+  });
+
+  // Move NO slightly away from cursor (50–60px)
+  function moveNoButton(event) {
+    const offset = 60; // distance from cursor
+
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    // Calculate direction away from cursor
+    const btnRect = noBtn.getBoundingClientRect();
+    const btnCenterX = btnRect.left + btnRect.width / 2;
+    const btnCenterY = btnRect.top + btnRect.height / 2;
+
+    const deltaX = btnCenterX - mouseX;
+    const deltaY = btnCenterY - mouseY;
+
+    const angle = Math.atan2(deltaY, deltaX);
+
+    const newX = btnRect.left + Math.cos(angle) * offset;
+    const newY = btnRect.top + Math.sin(angle) * offset;
+
+    noBtn.style.position = "absolute";
+    noBtn.style.left = newX + "px";
+    noBtn.style.top = newY + "px";
+
+    // Grow YES slightly
+    scale += 0.15;
+    yesBtn.style.transform = `scale(${scale})`;
+  }
+
+  noBtn.addEventListener("mouseover", moveNoButton);
+
+   function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }
+
+  setInterval(createHeart, 300);
+</script>
+
+
+</body>
+</html>

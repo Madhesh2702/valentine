@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Gayathri 💖</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .gradient-background {
+      background: linear-gradient(180deg, #ffd0e5 0%, #ffe8f2 36%, #ffffff 100%);
+      min-height: 100vh;
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body class="gradient-background flex items-center justify-center">
+
+  <div class="text-center">
+    <h1 class="text-5xl font-bold text-pink-600 mb-4">
+      Yayyy Gayathri!! 💕
+    </h1>
+
+    <p class="text-xl text-gray-700 mb-6">
+       🥰
+    </p>
+
+    <button
+      id="openLetter"
+      class="px-6 py-3 bg-pink-500 text-white rounded-lg text-lg hover:bg-pink-400 transition"
+    >
+      Open Your Love Letter 💌
+    </button>
+  </div>
+
+  <!-- Love Letter Modal -->
+  <div id="letterModal"
+       class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+
+    <div class="bg-white p-8 rounded-2xl max-w-lg mx-4 shadow-xl fade-in relative">
+
+      <button id="closeLetter"
+              class="absolute top-3 right-4 text-gray-500 text-xl">
+        ✖
+      </button>
+
+      <h2 class="text-3xl font-bold text-pink-600 mb-4 text-center">
+        For My Gayathri 💖
+      </h2>
+
+      <p class="text-gray-700 leading-relaxed whitespace-pre-line">
+
+Hy Nana! 💕
+
+I am writing this letter on account of Valentine’s Day. Since this is our first one together, I just wanted to make it a little remarkable for you.  
+
+I have never written any letter to anyone expressing my love… and honestly, I never thought I would ever write one like this — until I saw you.  
+
+I don’t even know the exact day when something happened between us… it just happened naturally, slowly, beautifully — like it was always meant to be.  
+
+Somehow, you walked into my life and made it way more exciting. 
+
+You didn’t just steal my heart… you made it yours without even trying.  
+
+I can’t wait to see what the future holds for us.  
+
+So here’s to us, to our memories, our laughter, our <b>Big</b> fights, and all the moments that are yet to come.  
+
+Forever yours  
+❤️  
+
+      </p>
+<div class="text-center mt-6">
+  <button
+    id="loveButton"
+    class="px-6 py-3 bg-red-500 text-white rounded-lg text-lg hover:bg-red-400 transition"
+  >
+    I Love You ❤️
+  </button>
+</div>
+
+    </div>
+  </div>
+
+  <script>
+    const openBtn = document.getElementById("openLetter");
+    const closeBtn = document.getElementById("closeLetter");
+    const modal = document.getElementById("letterModal");
+
+    openBtn.addEventListener("click", () => {
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modal.classList.remove("flex");
+      modal.classList.add("hidden");
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("flex");
+        modal.classList.add("hidden");
+      }
+    });
+
+    document.getElementById("loveButton").addEventListener("click", () => {
+  window.location.href = "marry.html";
+});
+
+  </script>
+
+</body>
+</html>
